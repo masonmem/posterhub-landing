@@ -75,11 +75,9 @@ h4 {
 }
 
 .map {
-    display: block;
     position: relative;
     margin-top: 30px;
-    width: 100%;
-    overflow: hidden;
+    max-width: 100%;
 }
 
 .carouselBox {
@@ -93,4 +91,9 @@ h4 {
 .mailchimp_signup {
     background: #000;
     margin-top: 30px;
+}
+
+ul {
+    margin-left: auto;
+    margin-right: auto;
 }
