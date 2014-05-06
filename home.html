@@ -11,12 +11,15 @@
 
         <!-- Bootstrap core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        
+        <!-- Lato font -->
+        <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 
         <!-- Custom styles for this template -->
         <link href="css/custom.css" rel="stylesheet">
 
         <!-- Styles for carousel -->
-        <link href="css/jquery.flipster.css" rel="stylesheet">        
+        <link href="css/jquery.flipster.min.css" rel="stylesheet">        
 
         <!-- Just for debugging purposes. Don't actually copy this line! -->
         <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -34,13 +37,15 @@
         <div class="mastheadText">
             <h1>Introducing <div class="mastheadTextHighlight">POSTER HUB</div></h1>
             <h3>A way to explore local events that just makes sense.</h3>
+            <a href="#shows" class="btn btn-outline-inverse btn-lg pull-left" style="margin-right: 5px">Local Shows</a>
+            <a href="#signup" class="btn btn-outline-inverse btn-lg pull-left">Sign Up</a>
         </div>
 
         <div class="row">
             <div class="infobox col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
                 <div class="infoboxContent">
-                    <p><strong>Poster Hub</strong> makes exploring Raleigh concerts effortless. View a beautiful display of shows happening in the triangle. Poster Hub lets you get straight to what you want to see: beautiful poster designs that you care about. And the details when you want them.</p>
+                    <p><strong>Poster Hub</strong> makes exploring Raleigh concerts effortless. View a beautiful display of shows happening in the triangle. Poster Hub lets you get straight to what you want to see: beautiful poster designs that you care about. And the details when you want them.</p>                
                 </div>
 
 
@@ -52,7 +57,8 @@
         <div class="container-fluid">
             <img class="map" src="http://maps.googleapis.com/maps/api/staticmap?center=Raleigh,+NC&zoom=8&scale=2&size=600x300&maptype=roadmap&sensor=false&format=png&visual_refresh=true">
         </div>
-
+        
+        <a name="shows"></a>
         <div class="row">
             <div class="infobox col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="infoboxContent">
@@ -161,20 +167,12 @@
                 </div>
             </div>
         </div>
-
+        
+        <a name="signup"></a>
         <div class="row">
             <div class="infobox col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div class="infoboxContent">
-                    <p>And of course we kept concert promoters and artists in mind. Sign up and get access to your customized promotion dashboard. Upload your posters and we'll take care of the rest, connecting you to the audience your musicians deserve.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="infobox col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="infoboxContent">
-                    <p>Poster Hub. It's launching this summer, and you aren't going to want to miss it. Sign up for exclusive access to an early preview now.
-                    </p>
+                    <p>And of course we kept concert promoters and artists in mind. Sign up and on launch, get access to your customized promotion dashboard. Upload your posters and we'll take care of the rest, connecting you to the audience your musicians deserve. Poster Hub. It's launching this summer, and you aren't going to want to miss it. Sign up for exclusive access to an early preview now.</p>
                 </div>
             </div>
         </div>
@@ -218,11 +216,18 @@
         <!-- Javascript (at end for faster loading) -->
         <script src="jquery/jquery-1.11.1.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="jquery/jquery.flipster.js"></script>
-        <script src="jquery/jquery.flippy.js"></script>
+        <script src="jquery/jquery.flipster.min.js"></script>
+        <script src="jquery/jquery.flippy.min.js"></script>
 
         <script>
             $(document).ready(function(){
+                
+                var isMobile = false;
+                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                    isMobile = true;
+                }
+                
+                //var isMobile = window.matchMedia("only screen and (max-width: 760px)");
                 
                 // Disable scroll
                 $('.carousel').flipster(
@@ -232,7 +237,7 @@
                 );
 
                 
-                $('.flip').on('click', function() {
+                $('.flip').on(isMobile ? 'touchend' : 'click', function() {
                     // If the item clicked on is not the focus and has been flipped, reset it to the poster
                     $('.flip.details').each(function() {
                         if($(this).closest('li').parent().attr('class').indexOf('flip-current') < 0) {
@@ -245,8 +250,8 @@
                     if ($(this).attr('class').indexOf('details') >= 0) {
                         $(this).flippyReverse();
                         $(this).removeClass("details");
-                    } // Else, it should be flipped to show poster details
-                    else {
+                    } 
+                    else { // Else, it should be flipped to show poster details
                         var details = $(this).children('.posterDetails').html();
                         $(this).flippy({
                             color_target: '#fff',
