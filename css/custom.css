@@ -131,10 +131,15 @@ ul {
     color: #000;
 }
 
+.posterContent a:link, a:visited, a:hover, a:active {
+    background: #000;
+    color: #fff;
+    border-bottom: 1px solid pink;
+}
+
 .posterContentTitle {
     display: inline-block;
     background: #990000;
-    color: #fff;
     max-width: 100%;
 }
 
@@ -152,4 +157,22 @@ ul {
   text-shadow: none;
   background-color: #fff;
   border-color: #fff;
+}
+
+@media screen and (max-width: 850px){/* for screens smaller then 850px, set the font size smaller */
+   .posterContent{
+    padding: 0;
+   }
+    .posterContent h2{
+     font-size:12px;
+   }
+    .posterContent h3 {
+     font-size:8px;
+    }
+    .posterContent p {
+    font-size: 8px;
+    }
+    .posterContent a {
+    font-size: 8px;
+    }
 }
