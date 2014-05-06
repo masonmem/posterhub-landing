@@ -93,3 +93,33 @@ ul {
     margin-left: auto;
     margin-right: auto;
 }
+
+.overlay {
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    top: 0px;
+    left: 0px;
+    width: 0px;
+    height: 0px;
+}
+
+.posterDetails {
+    display: none;
+}
+
+.posterContent {
+    padding: 20px;
+    font-weight: heavy;
+}
+
+.posterContent p {
+    color: #000;
+}
+
+.posterContentTitle {
+    display: inline-block;
+    background: #990000;
+    color: #fff;
+    max-width: 100%;
+}
